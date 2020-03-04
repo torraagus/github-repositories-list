@@ -1,0 +1,18 @@
+body {
+    text-align: center;
+    margin: 3rem;
+}
+
+img {
+    width: 75px;
+    height: 75px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    float: left;
+    font-size: 10px;
+}
