@@ -3,16 +3,28 @@ body {
     margin: 3rem;
 }
 
+h1 {
+    text-align: center;
+}
+
 img {
     width: 75px;
     height: 75px;
 }
 
-ul {
-    list-style: none;
+.repository {
+    padding-top: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
 }
 
-li {
-    float: left;
+.repository :nth-child(2) {
+    font-size: 18px;
+    margin: 0;
+}
+
+.repository :nth-child(3) {
+    font-weight: bold;
     font-size: 10px;
 }
