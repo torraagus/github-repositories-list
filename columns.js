@@ -8,7 +8,7 @@ function createCol(repo) {
     avatar.setAttribute('src', `${repo.owner.avatar_url}`);
     repo_full_name.innerHTML = repo.full_name;
     repo_owner_login.innerHTML = ` from ${repo.owner.login}`;    
-    repo_id.innerHTML = `#${formatId(repo.id)}`;            
+    repo_id.innerHTML = `#${repo.id}`;            
     let childs_arr = [repo_id, avatar, repo_full_name, repo_owner_login];
     appendChildsToElement(col, childs_arr);
     addClassesToElement(col, classes_arr)
@@ -25,9 +25,4 @@ function addClassesToElement(element, clasess) {
     clasess.forEach(c => {
         element.classList.add(c);
     });
-}
-
-function formatId(number) {
-    let formatted_number = Number(number);
-    return formatted_number < 10 ? `0${formatted_number}` : String(formatted_number);
 }
