@@ -36,3 +36,15 @@ img {
 .repository :nth-child(2) {
     margin: 0 0 0 10px;
 }
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    display: none;
+}

@@ -1,10 +1,11 @@
+var itemsPerPage = 10;
 var currentPage = 1;
 var lastIdSeen_array = [0];
 var url = `https://api.github.com/repositories`;
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function(event) {    
     let data = getRepositories(0);
-    pushLastId(data);
+    pushLastId(data);    
 })
 
 function showRepositories(data) {
@@ -19,6 +20,12 @@ function showRepositories(data) {
         var col = createCol(repo);                
         row.appendChild(col);                    
     });
+    showNextBtn();    
+}
+
+function showNextBtn() {
+    let nextBtn = document.getElementById("nextBtn");
+    nextBtn.style.display = "inline";
 }
 
 function cleanElement(element) {
@@ -32,7 +39,7 @@ function getRepositories(repoId) {
     .then(response => response.json())
     .then((data) => {
         data = data.filter(repo => repo.id > repoId)
-                   .slice(0, 11);
+                   .slice(0, itemsPerPage+1);
         return data;
     })
     .catch(err => console.log(err))
@@ -41,7 +48,7 @@ function getRepositories(repoId) {
 function pushLastId(data) {
     shouldDisablePreviousBtn();
     data.then((data) => {
-        lastIdSeen_array.push(data[9].id);
+        lastIdSeen_array.push(data[itemsPerPage-1].id);
         showRepositories(data)
     })
 }
