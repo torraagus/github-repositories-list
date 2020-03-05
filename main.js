@@ -70,19 +70,22 @@ function shouldDisablePreviousBtn() {
     }
 }
 
-function getNext10() {
-    currentPage++;
+function fetchRepositories() {
     url = `https://api.github.com/repositories?since=${lastIdSeen_array[currentPage-1]}`;
     let data = this.getRepositories(lastIdSeen_array[currentPage-1]);
     pushLastId(data);
+}
+
+function getNext10() {
+    currentPage++;
+    fetchRepositories();    
     console.log(lastIdSeen_array);
     console.log(currentPage);
 }
 
 function getPrevious10() {
     currentPage--;
-    url = `https://api.github.com/repositories?since=${lastIdSeen_array[currentPage-1]}`;
-    let data = this.getRepositories(lastIdSeen_array[currentPage-1]);
+    fetchRepositories();    
     popLastId(data);    
     console.log(lastIdSeen_array);
     console.log(currentPage);

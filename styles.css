@@ -31,6 +31,7 @@ img {
     font-style: italic;
     font-size: 12px;
     text-align: start;
+    width: 50px;
 }
 
 .repository :nth-child(2) {

@@ -1,3 +1,10 @@
+function createRow() {
+    let row = document.createElement("div");
+    row.classList.add("row");
+    row.classList.add("justify-content-center");
+    return row;
+}
+
 function createCol(repo) {
     let classes_arr = ["col-xl-5", "col-lg-6", "col-md-8", "col-sm-12", "col-xs-12", "repository"];
     let col = document.createElement("div");
