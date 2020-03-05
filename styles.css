@@ -3,28 +3,39 @@ body {
     margin: 3rem;
 }
 
-h1 {
+h1, p {
     text-align: center;
 }
 
 img {
-    width: 75px;
-    height: 75px;
+    width: 32px;
+    height: 32px;
 }
 
-.repository {
-    padding-top: 1rem;
-    text-align: center;
+.repository {     
     border-bottom: 1px solid #eeeeee;
     border-right: 1px solid #eeeeee;
 }
 
-.repository :nth-child(2) {
-    font-size: 18px;
-    margin: 0;
+.repository :nth-child(3) {
+    font-size: 12px;
+    margin: 0 0 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }
 
-.repository :nth-child(3) {
+.repository :nth-child(4) {
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
+}
+
+.repository :nth-child(1) {
+    font-style: italic;
+    font-size: 12px;
+    text-align: start;
+}
+
+.repository :nth-child(2) {
+    margin: 0 0 0 10px;
 }

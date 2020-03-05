@@ -5,36 +5,56 @@ document.addEventListener("DOMContentLoaded", function(event) {
 })
 
 function createRow() {
-    var row = document.createElement("div");
+    let row = document.createElement("div");
     row.classList.add("row");
+    row.classList.add("justify-content-center");
     return row;
 }
 
 function createCol(repo) {
-    var col = document.createElement("div");
-    var avatar = document.createElement("img");
-    var repo_full_name = document.createElement("p");
-    var repo_owner_login = document.createElement("p");
+    let classes_arr = ["col-xl-5", "col-lg-6", "col-md-8", "col-sm-12", "col-xs-12", "repository"];
+    let col = document.createElement("div");
+    let avatar = document.createElement("img");
+    let repo_full_name = document.createElement("span");
+    let repo_owner_login = document.createElement("span");
+    let repo_id = document.createElement("span");
     avatar.setAttribute('src', `${repo.owner.avatar_url}`);
     repo_full_name.innerHTML = repo.full_name;
-    repo_owner_login.innerHTML = `from ${repo.owner.login}`;    
-    col.classList.add("col-3");
-    col.classList.add("repository");
-    col.appendChild(avatar);
-    col.appendChild(repo_full_name);
-    col.appendChild(repo_owner_login);
+    repo_owner_login.innerHTML = ` from ${repo.owner.login}`;    
+    repo_id.innerHTML = `#${formatId(repo.id)}`;            
+    let childs_arr = [repo_id, avatar, repo_full_name, repo_owner_login];
+    appendChildsToElement(col, childs_arr);
+    addClassesToElement(col, classes_arr)
     return col;
+}
+
+function appendChildsToElement(element, childs) {
+    childs.forEach(c => {
+        element.appendChild(c);
+    });
+}
+
+function addClassesToElement(element, clasess) {
+    clasess.forEach(c => {
+        element.classList.add(c);
+    });
+}
+
+function formatId(number) {
+    let formatted_number = Number(number);
+    return formatted_number < 10 ? `0${formatted_number}` : String(formatted_number);
 }
 
 function showRepositories(data) {
     let container = document.getElementById('repoList');
+    var row = createRow();                        
     data.forEach(repo => {
-        var row = createRow();                        
-        for (let i = 0; i < 4; i++) {
-            var col = createCol(repo);                
-            row.appendChild(col);                    
-        }            
-        container.appendChild(row);
+        if (row.childElementCount == 1) {
+            container.appendChild(row);
+            row = createRow();                      
+        } 
+        var col = createCol(repo);                
+        row.appendChild(col);                    
     });
 }
 
